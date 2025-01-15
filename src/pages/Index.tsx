@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/Navigation";
 import { ContactForm } from "@/components/ContactForm";
+import { Footer } from "@/components/Footer";
 import { Building2, GraduationCap, Languages } from "lucide-react";
 
 const Index = () => {
@@ -86,6 +87,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };

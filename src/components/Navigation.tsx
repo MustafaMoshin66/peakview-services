@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram, Facebook } from "lucide-react";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +19,7 @@ export const Navigation = () => {
           <img src="/logo.png" alt="CrystalPeak Services" className="h-8" />
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {["about", "services", "contact"].map((item) => (
               <button
                 key={item}
@@ -29,9 +29,27 @@ export const Navigation = () => {
                 {item}
               </button>
             ))}
+            <div className="flex items-center space-x-4 ml-4 border-l pl-4 border-crystal-light">
+              <a
+                href="https://instagram.com/crystalpeak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-crystal-secondary hover:text-crystal-primary transition-colors"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://facebook.com/crystalpeak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-crystal-secondary hover:text-crystal-primary transition-colors"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+            </div>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation Toggle */}
           <button
             className="md:hidden text-crystal-primary"
             onClick={() => setIsOpen(!isOpen)}
@@ -53,6 +71,24 @@ export const Navigation = () => {
                   {item}
                 </button>
               ))}
+              <div className="flex space-x-4 pt-4 border-t border-crystal-light">
+                <a
+                  href="https://instagram.com/crystalpeak"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-crystal-secondary hover:text-crystal-primary transition-colors"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://facebook.com/crystalpeak"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-crystal-secondary hover:text-crystal-primary transition-colors"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+              </div>
             </div>
           </div>
         )}
