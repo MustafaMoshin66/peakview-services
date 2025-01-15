@@ -8,14 +8,22 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-crystal-light via-white to-crystal-light/50">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4">
+      {/* Hero Section with Animation */}
+      <section className="min-h-[90vh] flex items-center justify-center px-4">
         <div className="container mx-auto text-center">
-          <img src="/logo.png" alt="CrystalPeak Services" className="mx-auto h-32 mb-8 animate-fadeIn" />
-          <h1 className="text-4xl md:text-5xl font-bold text-crystal-accent mb-4 animate-fadeIn" style={{ animationDelay: "0.2s" }}>
-            Welcome to CrystalPeak Services
+          <h1 
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-crystal-accent mb-6 opacity-0 animate-fadeIn"
+            style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
+          >
+            Welcome to 
+            <span className="block mt-2 bg-gradient-to-r from-crystal-primary via-crystal-accent to-crystal-secondary bg-clip-text text-transparent">
+              CrystalPeak Services
+            </span>
           </h1>
-          <p className="text-xl text-crystal-secondary max-w-2xl mx-auto animate-fadeIn" style={{ animationDelay: "0.4s" }}>
+          <p 
+            className="text-xl md:text-2xl text-crystal-secondary max-w-2xl mx-auto opacity-0 animate-fadeIn"
+            style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
+          >
             Elevating businesses through professional services and expertise
           </p>
         </div>
