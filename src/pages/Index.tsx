@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
-import { Building2, GraduationCap, Languages } from "lucide-react";
+import { Building2, GraduationCap, Languages, Trophy, Users, Target, MapPin, Phone, Mail } from "lucide-react";
 
 const Index = () => {
   return (
@@ -49,6 +49,38 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Why Choose Us Section */}
+      <section className="py-20 px-4 bg-white/50">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-crystal-accent text-center mb-12">
+            Why Choose Us
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-crystal-primary/10 rounded-full mb-6">
+                <Trophy className="w-8 h-8 text-crystal-primary" />
+              </div>
+              <h3 className="text-2xl font-semibold text-crystal-accent mb-2">500+</h3>
+              <p className="text-crystal-secondary">Successful Projects</p>
+            </div>
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-crystal-primary/10 rounded-full mb-6">
+                <Users className="w-8 h-8 text-crystal-primary" />
+              </div>
+              <h3 className="text-2xl font-semibold text-crystal-accent mb-2">1000+</h3>
+              <p className="text-crystal-secondary">Happy Clients</p>
+            </div>
+            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-crystal-primary/10 rounded-full mb-6">
+                <Target className="w-8 h-8 text-crystal-primary" />
+              </div>
+              <h3 className="text-2xl font-semibold text-crystal-accent mb-2">98%</h3>
+              <p className="text-crystal-secondary">Client Satisfaction Rate</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section id="services" className="py-20 px-4 bg-gradient-to-b from-white/50 to-crystal-light/50">
         <div className="container mx-auto">
@@ -90,7 +122,38 @@ const Index = () => {
           <h2 className="text-3xl font-bold text-crystal-accent text-center mb-12">
             Contact Us
           </h2>
-          <ContactForm />
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div className="space-y-8">
+              <h3 className="text-2xl font-semibold text-crystal-accent mb-6">Get in Touch</h3>
+              <ContactForm />
+            </div>
+            <div className="space-y-8">
+              <h3 className="text-2xl font-semibold text-crystal-accent mb-6">Our Information</h3>
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 space-y-6">
+                <div className="flex items-start space-x-4">
+                  <MapPin className="w-6 h-6 text-crystal-primary mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-crystal-accent mb-1">Location</h4>
+                    <p className="text-crystal-secondary">123 Business Street<br />City, State 12345</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <Phone className="w-6 h-6 text-crystal-primary mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-crystal-accent mb-1">Phone</h4>
+                    <p className="text-crystal-secondary">+1 (555) 123-4567</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <Mail className="w-6 h-6 text-crystal-primary mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-crystal-accent mb-1">Email</h4>
+                    <p className="text-crystal-secondary">contact@crystalpeak.com</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
