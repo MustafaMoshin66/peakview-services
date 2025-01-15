@@ -16,7 +16,6 @@ export const ContactForm = () => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     
-    // Here you would typically send the form data to an email service
     toast({
       title: "Message Sent!",
       description: "We'll get back to you as soon as possible.",
@@ -33,7 +32,7 @@ export const ContactForm = () => {
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           required
-          className="bg-white"
+          className="bg-white/50 backdrop-blur-sm border-crystal-secondary/20 focus:border-crystal-primary transition-colors"
         />
       </div>
       <div>
@@ -43,7 +42,7 @@ export const ContactForm = () => {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           required
-          className="bg-white"
+          className="bg-white/50 backdrop-blur-sm border-crystal-secondary/20 focus:border-crystal-primary transition-colors"
         />
       </div>
       <div>
@@ -52,10 +51,13 @@ export const ContactForm = () => {
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           required
-          className="bg-white min-h-[150px]"
+          className="bg-white/50 backdrop-blur-sm border-crystal-secondary/20 focus:border-crystal-primary transition-colors min-h-[150px]"
         />
       </div>
-      <Button type="submit" className="w-full bg-crystal-primary hover:bg-crystal-secondary">
+      <Button 
+        type="submit" 
+        className="w-full bg-crystal-primary hover:bg-crystal-accent text-white transition-colors duration-300"
+      >
         Send Message
       </Button>
     </form>

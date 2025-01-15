@@ -24,7 +24,7 @@ export const Navigation = () => {
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="text-crystal-primary hover:text-crystal-secondary transition-colors capitalize"
+                className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium"
               >
                 {item}
               </button>
@@ -33,7 +33,7 @@ export const Navigation = () => {
 
           {/* Mobile Navigation */}
           <button
-            className="md:hidden"
+            className="md:hidden text-crystal-primary"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X /> : <Menu />}
@@ -42,13 +42,13 @@ export const Navigation = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4">
+          <div className="md:hidden pb-4 animate-fadeIn">
             <div className="flex flex-col space-y-4">
               {["about", "services", "contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className="text-crystal-primary hover:text-crystal-secondary transition-colors capitalize"
+                  className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium"
                 >
                   {item}
                 </button>

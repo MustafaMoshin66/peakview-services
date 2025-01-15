@@ -20,9 +20,10 @@ export default {
     extend: {
       colors: {
         crystal: {
-          primary: "#2C5282",
-          secondary: "#90CDF4",
-          light: "#F7FAFC",
+          primary: "#9b87f5",
+          secondary: "#7E69AB",
+          accent: "#8B5CF6",
+          light: "#F1F0FB",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
