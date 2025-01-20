@@ -26,8 +26,7 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8">
-      <h3 className="text-2xl font-semibold text-crystal-accent mb-6 text-center">Get in Touch</h3>
+    <div className="w-full max-w-md bg-white rounded-xl shadow-xl p-8">
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="relative">
           <User className="absolute left-3 top-3 h-5 w-5 text-crystal-secondary/50" />
@@ -36,7 +35,7 @@ export const ContactForm = () => {
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             required
-            className="pl-10 bg-white/50 border-crystal-secondary/20 focus:border-crystal-primary transition-colors"
+            className="pl-10 border-crystal-secondary/20 focus:border-crystal-primary transition-colors rounded-lg"
           />
         </div>
         <div className="relative">
@@ -47,7 +46,7 @@ export const ContactForm = () => {
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             required
-            className="pl-10 bg-white/50 border-crystal-secondary/20 focus:border-crystal-primary transition-colors"
+            className="pl-10 border-crystal-secondary/20 focus:border-crystal-primary transition-colors rounded-lg"
           />
         </div>
         <div className="relative">
@@ -57,12 +56,12 @@ export const ContactForm = () => {
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             required
-            className="pl-10 bg-white/50 border-crystal-secondary/20 focus:border-crystal-primary transition-colors min-h-[150px] resize-none"
+            className="pl-10 border-crystal-secondary/20 focus:border-crystal-primary transition-colors min-h-[150px] resize-none rounded-lg"
           />
         </div>
         <Button 
           type="submit" 
-          className="w-full bg-crystal-primary hover:bg-crystal-secondary text-white transition-colors duration-300 py-6"
+          className="w-full bg-crystal-primary hover:bg-crystal-secondary text-white transition-colors duration-300 py-6 rounded-lg shadow-lg hover:shadow-xl"
         >
           Send Message
         </Button>

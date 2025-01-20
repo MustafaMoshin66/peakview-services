@@ -6,10 +6,19 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const { translations, language } = useLanguage();
   const location = useLocation();
   const t = translations[language];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (id: string) => {
     if (location.pathname !== '/') {
@@ -31,22 +40,28 @@ export const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed w-full bg-crystal-accent/95 backdrop-blur-sm z-50 shadow-lg">
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-6">
-        <div className="flex justify-between items-center h-28">
-          <Link to="/" className="flex items-center space-x-2">
-            <img 
-              src="/lovable-uploads/f707d378-8f0e-4adb-bf79-8964d18ae477.png" 
-              alt="CrystalPeak Logo" 
-              className="h-24 w-24 transition-transform hover:scale-105"
-            />
+        <div className="flex justify-between items-center">
+          <Link to="/" className="flex items-center space-x-3">
+            <div className="relative">
+              <div className="absolute inset-0 bg-white/80 rounded-full blur-sm"></div>
+              <img 
+                src="/lovable-uploads/f707d378-8f0e-4adb-bf79-8964d18ae477.png" 
+                alt="CrystalPeak Logo" 
+                className="h-16 w-16 relative z-10 transition-transform hover:scale-105"
+              />
+            </div>
+            <span className={`text-lg font-medium ${isScrolled ? 'text-crystal-accent' : 'text-white'}`}>
+              {language === 'en' ? 'English' : 'عربي'}
+            </span>
           </Link>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-10">
+          <div className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("about")}
-              className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
+              className={`hover:text-crystal-primary transition-colors capitalize font-medium ${isScrolled ? 'text-crystal-accent' : 'text-white'}`}
             >
               {t.about}
             </button>
@@ -55,18 +70,18 @@ export const Navigation = () => {
             <div className="relative group">
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className="flex items-center space-x-1 text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium text-lg group"
+                className={`flex items-center space-x-1 group ${isScrolled ? 'text-crystal-accent' : 'text-white'} hover:text-crystal-primary transition-colors capitalize font-medium`}
               >
                 <span>{t.services}</span>
                 <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
               </button>
               
-              <div className="absolute top-full left-0 mt-2 w-56 bg-crystal-accent rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2">
                 {services.map((service) => (
                   <Link
                     key={service.path}
                     to={service.path}
-                    className="block px-4 py-2 text-crystal-light hover:bg-crystal-secondary/20 hover:text-crystal-primary transition-colors"
+                    className="block px-4 py-2 text-crystal-accent hover:bg-crystal-light/50 hover:text-crystal-primary transition-colors"
                   >
                     {service.name}
                   </Link>
@@ -76,60 +91,60 @@ export const Navigation = () => {
             
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
+              className={`hover:text-crystal-primary transition-colors capitalize font-medium ${isScrolled ? 'text-crystal-accent' : 'text-white'}`}
             >
               {t.contact}
             </button>
             
-            <div className="flex items-center space-x-6 ml-8 border-l pl-8 border-crystal-light/20">
+            <div className="flex items-center space-x-6 ml-8 border-l pl-8 border-white/20">
               <LanguageSwitcher />
               <a
                 href="https://instagram.com/crystalpeak"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-crystal-light hover:text-crystal-primary transition-colors"
+                className={`${isScrolled ? 'text-crystal-accent' : 'text-white'} hover:text-crystal-primary transition-colors`}
               >
-                <Instagram className="w-6 h-6" />
+                <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="https://facebook.com/crystalpeak"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-crystal-light hover:text-crystal-primary transition-colors"
+                className={`${isScrolled ? 'text-crystal-accent' : 'text-white'} hover:text-crystal-primary transition-colors`}
               >
-                <Facebook className="w-6 h-6" />
+                <Facebook className="w-5 h-5" />
               </a>
             </div>
           </div>
 
           {/* Mobile Navigation Toggle */}
           <button
-            className="md:hidden text-crystal-light"
+            className={`md:hidden ${isScrolled ? 'text-crystal-accent' : 'text-white'}`}
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-6 animate-fadeIn bg-crystal-accent">
-            <div className="flex flex-col space-y-6">
+          <div className="md:hidden py-6 animate-fadeIn bg-white/95 backdrop-blur-md mt-4 rounded-xl shadow-lg">
+            <div className="flex flex-col space-y-4">
               <button
                 onClick={() => scrollToSection("about")}
-                className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
+                className="text-crystal-accent hover:text-crystal-primary transition-colors capitalize font-medium px-4"
               >
                 {t.about}
               </button>
               
               {/* Mobile Services Links */}
-              <div className="space-y-4 pl-4">
-                <p className="text-crystal-light font-medium text-lg">{t.services}:</p>
+              <div className="space-y-2 px-4">
+                <p className="text-crystal-accent font-medium">{t.services}:</p>
                 {services.map((service) => (
                   <Link
                     key={service.path}
                     to={service.path}
-                    className="block text-crystal-light hover:text-crystal-primary transition-colors"
+                    className="block text-crystal-secondary hover:text-crystal-primary transition-colors pl-4"
                     onClick={() => setIsOpen(false)}
                   >
                     {service.name}
@@ -139,28 +154,28 @@ export const Navigation = () => {
               
               <button
                 onClick={() => scrollToSection("contact")}
-                className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
+                className="text-crystal-accent hover:text-crystal-primary transition-colors capitalize font-medium px-4"
               >
                 {t.contact}
               </button>
               
-              <div className="flex items-center space-x-6 pt-6 border-t border-crystal-light/20">
+              <div className="flex items-center space-x-6 pt-4 mt-4 border-t border-crystal-light/20 px-4">
                 <LanguageSwitcher />
                 <a
                   href="https://instagram.com/crystalpeak"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-crystal-light hover:text-crystal-primary transition-colors"
+                  className="text-crystal-accent hover:text-crystal-primary transition-colors"
                 >
-                  <Instagram className="w-6 h-6" />
+                  <Instagram className="w-5 h-5" />
                 </a>
                 <a
                   href="https://facebook.com/crystalpeak"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-crystal-light hover:text-crystal-primary transition-colors"
+                  className="text-crystal-accent hover:text-crystal-primary transition-colors"
                 >
-                  <Facebook className="w-6 h-6" />
+                  <Facebook className="w-5 h-5" />
                 </a>
               </div>
             </div>
