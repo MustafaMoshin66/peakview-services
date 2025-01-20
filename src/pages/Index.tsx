@@ -18,6 +18,12 @@ const Index = () => {
         }}
       >
         <div className="container mx-auto text-center">
+          <img 
+            src="/lovable-uploads/f707d378-8f0e-4adb-bf79-8964d18ae477.png" 
+            alt="CrystalPeak Services Logo" 
+            className="w-48 h-48 mx-auto mb-8 animate-fadeIn"
+            style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}
+          />
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 opacity-0 animate-fadeIn"
               style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}>
             Welcome to 
@@ -39,7 +45,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section with Image */}
+      {/* About Section with Image and Stats */}
       <section id="about" className="py-20 px-4">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -56,7 +62,28 @@ const Index = () => {
                 Founded on the principles of professionalism and innovation, we strive to
                 help businesses reach new heights through our comprehensive range of services.
               </p>
-              <div className="flex gap-4">
+              
+              {/* Stats Grid moved to About section */}
+              <div className="grid grid-cols-2 gap-8 mt-12">
+                <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg">
+                  <h3 className="text-3xl font-bold text-crystal-primary mb-2">500+</h3>
+                  <p className="text-crystal-secondary">Projects Completed</p>
+                </div>
+                <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg">
+                  <h3 className="text-3xl font-bold text-crystal-primary mb-2">1000+</h3>
+                  <p className="text-crystal-secondary">Happy Clients</p>
+                </div>
+                <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg">
+                  <h3 className="text-3xl font-bold text-crystal-primary mb-2">50+</h3>
+                  <p className="text-crystal-secondary">Team Members</p>
+                </div>
+                <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg">
+                  <h3 className="text-3xl font-bold text-crystal-primary mb-2">98%</h3>
+                  <p className="text-crystal-secondary">Satisfaction Rate</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 mt-8">
                 <div className="flex items-center gap-2">
                   <Trophy className="w-6 h-6 text-crystal-primary" />
                   <span className="text-crystal-accent">10+ Years Experience</span>
@@ -82,6 +109,7 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Services Section */}
       {/* Services Section with Cards */}
       <section id="services" className="py-20 px-4 bg-gradient-to-b from-white/50 to-crystal-light/50">
         <div className="container mx-auto">
@@ -126,31 +154,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 px-4 bg-crystal-accent text-white">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto text-center">
-            <div>
-              <h3 className="text-4xl font-bold mb-2">500+</h3>
-              <p className="text-crystal-light">Projects Completed</p>
-            </div>
-            <div>
-              <h3 className="text-4xl font-bold mb-2">1000+</h3>
-              <p className="text-crystal-light">Happy Clients</p>
-            </div>
-            <div>
-              <h3 className="text-4xl font-bold mb-2">50+</h3>
-              <p className="text-crystal-light">Team Members</p>
-            </div>
-            <div>
-              <h3 className="text-4xl font-bold mb-2">98%</h3>
-              <p className="text-crystal-light">Satisfaction Rate</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section with Two Columns */}
+      {/* Contact Section */}
       <section id="contact" className="py-20 px-4 bg-gradient-to-t from-crystal-light/30 to-white/30">
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold text-crystal-accent text-center mb-12">
