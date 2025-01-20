@@ -4,11 +4,14 @@ import { Footer } from "@/components/Footer";
 import { Building2, GraduationCap, Languages, Trophy, Users, MapPin, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-crystal-light via-white to-crystal-light/50">
-      <Navigation />
+      <LanguageProvider>
+        <Navigation />
+      </LanguageProvider>
       
       {/* Hero Section with Parallax Effect */}
       <section 
