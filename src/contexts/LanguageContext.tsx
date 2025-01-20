@@ -23,6 +23,13 @@ const translations = {
     aboutUsDescription: "At CrystalPeak Services, we believe in delivering excellence through clarity and precision. Our team of experts brings years of experience and dedication to every project we undertake.",
     getInTouch: "Get in Touch",
     exploreServices: "Explore Our Services",
+    currentLang: "English",
+    heroTitle: "Welcome to CrystalPeak Services",
+    heroSubtitle: "Elevating businesses through professional services and expertise",
+    quickLinks: "Quick Links",
+    connectWithUs: "Connect With Us",
+    footerDescription: "Elevating businesses through professional services and expertise.",
+    allRightsReserved: "All rights reserved.",
   },
   ar: {
     about: "عن الشركة",
@@ -38,6 +45,13 @@ const translations = {
     aboutUsDescription: "في كريستال بيك للخدمات، نؤمن بتقديم التميز من خلال الوضوح والدقة. يجلب فريق الخبراء لدينا سنوات من الخبرة والتفاني في كل مشروع نقوم به.",
     getInTouch: "تواصل معنا",
     exploreServices: "استكشف خدماتنا",
+    currentLang: "عربي",
+    heroTitle: "مرحباً بكم في خدمات كريستال بيك",
+    heroSubtitle: "نرتقي بالأعمال من خلال الخدمات والخبرات المهنية",
+    quickLinks: "روابط سريعة",
+    connectWithUs: "تواصل معنا",
+    footerDescription: "نرتقي بالأعمال من خلال الخدمات والخبرات المهنية.",
+    allRightsReserved: "جميع الحقوق محفوظة.",
   }
 };
 
