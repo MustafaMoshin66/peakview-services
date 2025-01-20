@@ -1,4 +1,4 @@
-import { Languages } from "lucide-react";
+import { Globe } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,13 +9,19 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 
 export const LanguageSwitcher = () => {
-  const { setLanguage } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="hover:bg-crystal-light">
-          <Languages className="h-5 w-5 text-crystal-secondary hover:text-crystal-primary transition-colors" />
+        <Button 
+          variant="ghost" 
+          className="flex items-center space-x-2 hover:bg-crystal-light/10"
+        >
+          <Globe className="h-5 w-5 text-crystal-secondary hover:text-crystal-primary transition-colors" />
+          <span className={`text-sm font-medium ${language === 'ar' ? 'font-arabic' : ''}`}>
+            {language === 'en' ? 'English' : 'العربية'}
+          </span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-32">

@@ -20,6 +20,11 @@ export const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    // Close mobile menu when route changes
+    setIsOpen(false);
+  }, [location]);
+
   const scrollToSection = (id: string) => {
     if (location.pathname !== '/') {
       window.location.href = `/#${id}`;
@@ -40,28 +45,29 @@ export const Navigation = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'}`}>
-      <div className="container mx-auto px-6">
+    <nav 
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'
+      }`}
+      dir={language === 'ar' ? 'rtl' : 'ltr'}
+    >
+      <div className="container mx-auto px-4 lg:px-6">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="relative">
-              <div className="absolute inset-0 bg-white/80 rounded-full blur-sm"></div>
-              <img 
-                src="/lovable-uploads/f707d378-8f0e-4adb-bf79-8964d18ae477.png" 
-                alt="CrystalPeak Logo" 
-                className="h-16 w-16 relative z-10 transition-transform hover:scale-105"
-              />
-            </div>
-            <span className={`text-lg font-medium ${isScrolled ? 'text-crystal-accent' : 'text-white'}`}>
-              {language === 'en' ? 'English' : 'عربي'}
-            </span>
+          <Link to="/" className="flex items-center space-x-3 relative logo-spotlight">
+            <img 
+              src="/lovable-uploads/f707d378-8f0e-4adb-bf79-8964d18ae477.png" 
+              alt="CrystalPeak Logo" 
+              className="h-16 w-16 relative z-10 transition-transform hover:scale-105"
+            />
           </Link>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("about")}
-              className={`hover:text-crystal-primary transition-colors capitalize font-medium ${isScrolled ? 'text-crystal-accent' : 'text-white'}`}
+              className={`hover:text-crystal-primary transition-colors capitalize font-medium ${
+                isScrolled ? 'text-crystal-accent' : 'text-white'
+              }`}
             >
               {t.about}
             </button>
@@ -70,7 +76,9 @@ export const Navigation = () => {
             <div className="relative group">
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className={`flex items-center space-x-1 group ${isScrolled ? 'text-crystal-accent' : 'text-white'} hover:text-crystal-primary transition-colors capitalize font-medium`}
+                className={`flex items-center space-x-1 group ${
+                  isScrolled ? 'text-crystal-accent' : 'text-white'
+                } hover:text-crystal-primary transition-colors capitalize font-medium`}
               >
                 <span>{t.services}</span>
                 <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
@@ -91,44 +99,51 @@ export const Navigation = () => {
             
             <button
               onClick={() => scrollToSection("contact")}
-              className={`hover:text-crystal-primary transition-colors capitalize font-medium ${isScrolled ? 'text-crystal-accent' : 'text-white'}`}
+              className={`hover:text-crystal-primary transition-colors capitalize font-medium ${
+                isScrolled ? 'text-crystal-accent' : 'text-white'
+              }`}
             >
               {t.contact}
             </button>
             
             <div className="flex items-center space-x-6 ml-8 border-l pl-8 border-white/20">
               <LanguageSwitcher />
-              <a
-                href="https://instagram.com/crystalpeak"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${isScrolled ? 'text-crystal-accent' : 'text-white'} hover:text-crystal-primary transition-colors`}
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="https://facebook.com/crystalpeak"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${isScrolled ? 'text-crystal-accent' : 'text-white'} hover:text-crystal-primary transition-colors`}
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
+              <div className="flex items-center space-x-4">
+                <a
+                  href="https://instagram.com/crystalpeak"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${isScrolled ? 'text-crystal-accent' : 'text-white'} hover:text-crystal-primary transition-colors`}
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://facebook.com/crystalpeak"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${isScrolled ? 'text-crystal-accent' : 'text-white'} hover:text-crystal-primary transition-colors`}
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+              </div>
             </div>
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <button
-            className={`md:hidden ${isScrolled ? 'text-crystal-accent' : 'text-white'}`}
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className="lg:hidden flex items-center space-x-4">
+            <LanguageSwitcher />
+            <button
+              className={`${isScrolled ? 'text-crystal-accent' : 'text-white'}`}
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden py-6 animate-fadeIn bg-white/95 backdrop-blur-md mt-4 rounded-xl shadow-lg">
+          <div className="lg:hidden py-6 animate-fadeIn bg-white/95 backdrop-blur-md mt-4 rounded-xl shadow-lg">
             <div className="flex flex-col space-y-4">
               <button
                 onClick={() => scrollToSection("about")}
@@ -160,7 +175,6 @@ export const Navigation = () => {
               </button>
               
               <div className="flex items-center space-x-6 pt-4 mt-4 border-t border-crystal-light/20 px-4">
-                <LanguageSwitcher />
                 <a
                   href="https://instagram.com/crystalpeak"
                   target="_blank"
