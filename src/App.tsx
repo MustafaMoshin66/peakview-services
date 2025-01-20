@@ -17,9 +17,9 @@ const App = () => (
     <LanguageProvider>
       <TooltipProvider>
         <BrowserRouter>
-          <ScrollToTop />
           <Toaster />
           <Sonner />
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/services/interpretation" element={<InterpretationService />} />

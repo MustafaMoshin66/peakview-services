@@ -5,7 +5,19 @@ export const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    try {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    } catch (error) {
+      // Fallback for older browsers
+      window.scrollTo(0, 0);
+    }
+
+    return () => {
+      // Cleanup if needed
+    };
   }, [pathname]);
 
   return null;
