@@ -21,67 +21,64 @@ export const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+    <nav className="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-lg">
+      <div className="container mx-auto px-6">
+        <div className="flex justify-between items-center h-24">
           <Link to="/" className="flex items-center space-x-2">
             <img 
               src="/lovable-uploads/f707d378-8f0e-4adb-bf79-8964d18ae477.png" 
               alt="CrystalPeak Logo" 
-              className="h-10 w-10"
+              className="h-16 w-16 transition-transform hover:scale-105"
             />
           </Link>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-10">
             <button
               onClick={() => scrollToSection("about")}
-              className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium"
+              className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
             >
               About
             </button>
             
             {/* Services Dropdown */}
-            <div className="relative">
+            <div className="relative group">
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className="flex items-center space-x-1 text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium"
+                className="flex items-center space-x-1 text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium text-lg group"
               >
                 <span>Services</span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
               </button>
               
-              {isServicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-2 z-50">
-                  {services.map((service) => (
-                    <Link
-                      key={service.path}
-                      to={service.path}
-                      className="block px-4 py-2 text-crystal-secondary hover:bg-crystal-light hover:text-crystal-primary transition-colors"
-                      onClick={() => setIsServicesOpen(false)}
-                    >
-                      {service.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                {services.map((service) => (
+                  <Link
+                    key={service.path}
+                    to={service.path}
+                    className="block px-4 py-2 text-crystal-secondary hover:bg-crystal-light hover:text-crystal-primary transition-colors"
+                  >
+                    {service.name}
+                  </Link>
+                ))}
+              </div>
             </div>
             
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium"
+              className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
             >
               Contact
             </button>
             
-            <div className="flex items-center space-x-4 ml-4 border-l pl-4 border-crystal-light">
+            <div className="flex items-center space-x-6 ml-8 border-l pl-8 border-crystal-light">
               <a
                 href="https://instagram.com/crystalpeak"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-crystal-secondary hover:text-crystal-primary transition-colors"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-6 h-6" />
               </a>
               <a
                 href="https://facebook.com/crystalpeak"
@@ -89,7 +86,7 @@ export const Navigation = () => {
                 rel="noopener noreferrer"
                 className="text-crystal-secondary hover:text-crystal-primary transition-colors"
               >
-                <Facebook className="w-5 h-5" />
+                <Facebook className="w-6 h-6" />
               </a>
             </div>
           </div>
@@ -99,24 +96,24 @@ export const Navigation = () => {
             className="md:hidden text-crystal-primary"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X /> : <Menu />}
+            {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4 animate-fadeIn">
-            <div className="flex flex-col space-y-4">
+          <div className="md:hidden pb-6 animate-fadeIn">
+            <div className="flex flex-col space-y-6">
               <button
                 onClick={() => scrollToSection("about")}
-                className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium"
+                className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
               >
                 About
               </button>
               
               {/* Mobile Services Links */}
-              <div className="space-y-2 pl-4">
-                <p className="text-crystal-secondary font-medium">Services:</p>
+              <div className="space-y-4 pl-4">
+                <p className="text-crystal-secondary font-medium text-lg">Services:</p>
                 {services.map((service) => (
                   <Link
                     key={service.path}
@@ -131,19 +128,19 @@ export const Navigation = () => {
               
               <button
                 onClick={() => scrollToSection("contact")}
-                className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium"
+                className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
               >
                 Contact
               </button>
               
-              <div className="flex space-x-4 pt-4 border-t border-crystal-light">
+              <div className="flex space-x-6 pt-6 border-t border-crystal-light">
                 <a
                   href="https://instagram.com/crystalpeak"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-crystal-secondary hover:text-crystal-primary transition-colors"
                 >
-                  <Instagram className="w-5 h-5" />
+                  <Instagram className="w-6 h-6" />
                 </a>
                 <a
                   href="https://facebook.com/crystalpeak"
@@ -151,7 +148,7 @@ export const Navigation = () => {
                   rel="noopener noreferrer"
                   className="text-crystal-secondary hover:text-crystal-primary transition-colors"
                 >
-                  <Facebook className="w-5 h-5" />
+                  <Facebook className="w-6 h-6" />
                 </a>
               </div>
             </div>
