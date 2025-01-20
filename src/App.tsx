@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import { ScrollToTop } from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import InterpretationService from "./pages/InterpretationService";
 import BusinessConsulting from "./pages/BusinessConsulting";
@@ -15,9 +16,10 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
+          <Toaster />
+          <Sonner />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/services/interpretation" element={<InterpretationService />} />
