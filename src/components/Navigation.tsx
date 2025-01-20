@@ -33,12 +33,12 @@ export const Navigation = () => {
   return (
     <nav className="fixed w-full bg-crystal-accent/95 backdrop-blur-sm z-50">
       <div className="container mx-auto px-6">
-        <div className="relative flex justify-between items-center h-28">
+        <div className="relative flex justify-between items-center h-20">
           {/* Left Navigation Items */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <button
               onClick={() => scrollToSection("about")}
-              className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
+              className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium"
             >
               {t.about}
             </button>
@@ -47,7 +47,7 @@ export const Navigation = () => {
             <div className="relative group">
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className="flex items-center space-x-1 text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium text-lg group"
+                className="flex items-center space-x-1 text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium group"
               >
                 <span>{t.services}</span>
                 <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
@@ -70,27 +70,27 @@ export const Navigation = () => {
           {/* Centered Logo with Half-circle Background */}
           <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
             <div className="relative">
-              <div className="absolute inset-0 bg-crystal-accent -z-10 rounded-[100px] w-[200px] transform -translate-x-[20%]"></div>
+              <div className="absolute inset-0 bg-crystal-secondary/10 -z-10 rounded-[50px] w-[140px] transform -translate-x-[20%]"></div>
               <Link to="/" className="block">
                 <img 
                   src="/lovable-uploads/f707d378-8f0e-4adb-bf79-8964d18ae477.png" 
                   alt="CrystalPeak Logo" 
-                  className="h-32 w-32 transition-transform hover:scale-105"
+                  className="h-24 w-24 transition-transform hover:scale-105"
                 />
               </Link>
             </div>
           </div>
 
           {/* Right Navigation Items */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
+              className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium"
             >
               {t.contact}
             </button>
             
-            <div className="flex items-center space-x-6 ml-8 border-l pl-8 border-crystal-light/20">
+            <div className="flex items-center space-x-4 ml-4 border-l pl-4 border-crystal-light/20">
               <LanguageSwitcher />
               <a
                 href="https://instagram.com/crystalpeak"
@@ -98,7 +98,7 @@ export const Navigation = () => {
                 rel="noopener noreferrer"
                 className="text-crystal-light hover:text-crystal-primary transition-colors"
               >
-                <Instagram className="w-6 h-6" />
+                <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="https://facebook.com/crystalpeak"
@@ -106,7 +106,7 @@ export const Navigation = () => {
                 rel="noopener noreferrer"
                 className="text-crystal-light hover:text-crystal-primary transition-colors"
               >
-                <Facebook className="w-6 h-6" />
+                <Facebook className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -116,7 +116,7 @@ export const Navigation = () => {
             className="md:hidden text-crystal-light"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
@@ -126,14 +126,14 @@ export const Navigation = () => {
             <div className="flex flex-col space-y-6">
               <button
                 onClick={() => scrollToSection("about")}
-                className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
+                className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium"
               >
                 {t.about}
               </button>
               
               {/* Mobile Services Links */}
               <div className="space-y-4 pl-4">
-                <p className="text-crystal-light font-medium text-lg">{t.services}:</p>
+                <p className="text-crystal-light font-medium">{t.services}:</p>
                 {services.map((service) => (
                   <Link
                     key={service.path}
@@ -148,7 +148,7 @@ export const Navigation = () => {
               
               <button
                 onClick={() => scrollToSection("contact")}
-                className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
+                className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium"
               >
                 {t.contact}
               </button>
