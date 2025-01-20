@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X, Instagram, Facebook, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -31,19 +31,11 @@ export const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed w-full bg-crystal-accent/95 backdrop-blur-sm z-50 shadow-lg">
+    <nav className="fixed w-full bg-crystal-accent/95 backdrop-blur-sm z-50">
       <div className="container mx-auto px-6">
-        <div className="flex justify-between items-center h-28">
-          <Link to="/" className="flex items-center space-x-2">
-            <img 
-              src="/lovable-uploads/f707d378-8f0e-4adb-bf79-8964d18ae477.png" 
-              alt="CrystalPeak Logo" 
-              className="h-24 w-24 transition-transform hover:scale-105"
-            />
-          </Link>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-10">
+        <div className="relative flex justify-between items-center h-28">
+          {/* Left Navigation Items */}
+          <div className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("about")}
               className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
@@ -73,7 +65,24 @@ export const Navigation = () => {
                 ))}
               </div>
             </div>
-            
+          </div>
+
+          {/* Centered Logo with Half-circle Background */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
+            <div className="relative">
+              <div className="absolute inset-0 bg-crystal-accent -z-10 rounded-[100px] w-[200px] transform -translate-x-[20%]"></div>
+              <Link to="/" className="block">
+                <img 
+                  src="/lovable-uploads/f707d378-8f0e-4adb-bf79-8964d18ae477.png" 
+                  alt="CrystalPeak Logo" 
+                  className="h-32 w-32 transition-transform hover:scale-105"
+                />
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Navigation Items */}
+          <div className="hidden md:flex items-center space-x-6">
             <button
               onClick={() => scrollToSection("contact")}
               className="text-crystal-light hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
@@ -102,7 +111,7 @@ export const Navigation = () => {
             </div>
           </div>
 
-          {/* Mobile Navigation Toggle */}
+          {/* Mobile Menu Button */}
           <button
             className="md:hidden text-crystal-light"
             onClick={() => setIsOpen(!isOpen)}
@@ -113,7 +122,7 @@ export const Navigation = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-6 animate-fadeIn bg-crystal-accent">
+          <div className="md:hidden pb-6 animate-fadeIn">
             <div className="flex flex-col space-y-6">
               <button
                 onClick={() => scrollToSection("about")}
