@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Menu, X, Instagram, Facebook, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const { translations, language } = useLanguage();
+  const t = translations[language];
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -15,9 +19,9 @@ export const Navigation = () => {
   };
 
   const services = [
-    { name: "Interpretation", path: "/services/interpretation" },
-    { name: "Business Consulting", path: "/services/consulting" },
-    { name: "Professional Training", path: "/services/training" },
+    { name: t.interpretation, path: "/services/interpretation" },
+    { name: t.businessConsulting, path: "/services/consulting" },
+    { name: t.professionalTraining, path: "/services/training" },
   ];
 
   return (
@@ -28,7 +32,7 @@ export const Navigation = () => {
             <img 
               src="/lovable-uploads/f707d378-8f0e-4adb-bf79-8964d18ae477.png" 
               alt="CrystalPeak Logo" 
-              className="h-16 w-16 transition-transform hover:scale-105"
+              className="h-20 w-20 transition-transform hover:scale-105"
             />
           </Link>
           
@@ -38,7 +42,7 @@ export const Navigation = () => {
               onClick={() => scrollToSection("about")}
               className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
             >
-              About
+              {t.about}
             </button>
             
             {/* Services Dropdown */}
@@ -47,7 +51,7 @@ export const Navigation = () => {
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
                 className="flex items-center space-x-1 text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium text-lg group"
               >
-                <span>Services</span>
+                <span>{t.services}</span>
                 <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
               </button>
               
@@ -68,10 +72,11 @@ export const Navigation = () => {
               onClick={() => scrollToSection("contact")}
               className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
             >
-              Contact
+              {t.contact}
             </button>
             
             <div className="flex items-center space-x-6 ml-8 border-l pl-8 border-crystal-light">
+              <LanguageSwitcher />
               <a
                 href="https://instagram.com/crystalpeak"
                 target="_blank"
@@ -108,12 +113,12 @@ export const Navigation = () => {
                 onClick={() => scrollToSection("about")}
                 className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
               >
-                About
+                {t.about}
               </button>
               
               {/* Mobile Services Links */}
               <div className="space-y-4 pl-4">
-                <p className="text-crystal-secondary font-medium text-lg">Services:</p>
+                <p className="text-crystal-secondary font-medium text-lg">{t.services}:</p>
                 {services.map((service) => (
                   <Link
                     key={service.path}
@@ -130,10 +135,11 @@ export const Navigation = () => {
                 onClick={() => scrollToSection("contact")}
                 className="text-crystal-secondary hover:text-crystal-primary transition-colors capitalize font-medium text-lg"
               >
-                Contact
+                {t.contact}
               </button>
               
-              <div className="flex space-x-6 pt-6 border-t border-crystal-light">
+              <div className="flex items-center space-x-6 pt-6 border-t border-crystal-light">
+                <LanguageSwitcher />
                 <a
                   href="https://instagram.com/crystalpeak"
                   target="_blank"

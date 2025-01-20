@@ -20,10 +20,10 @@ export default {
     extend: {
       colors: {
         crystal: {
-          primary: "#9b87f5",    // Updated to a richer purple
-          secondary: "#7E69AB",  // Softer purple
-          accent: "#1A1F2C",     // Dark purple for better contrast
-          light: "#F1F0FB",      // Soft gray with purple undertone
+          primary: "#9b87f5",    
+          secondary: "#7E69AB",  
+          accent: "#1A1F2C",     
+          light: "#F1F0FB",      
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -61,6 +61,7 @@ export default {
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
+        arabic: ["Noto Sans Arabic", "sans-serif"],
       },
       keyframes: {
         fadeIn: {
