@@ -20,10 +20,10 @@ export default {
     extend: {
       colors: {
         crystal: {
-          primary: "#9b87f5",    
-          secondary: "#7E69AB",  
-          accent: "#1A1F2C",     
-          light: "#F1F0FB",      
+          primary: "#9b87f5",    // Main purple from logo
+          secondary: "#7E69AB",  // Darker purple for contrast
+          accent: "#1A1F2C",     // Dark background
+          light: "#F1F0FB",      // Light purple/white for text
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
