@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
-import { Building2, GraduationCap, Languages, Trophy, Users, Target, MapPin, Phone, Mail } from "lucide-react";
+import { Building2, GraduationCap, Languages, Trophy, Users, MapPin, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -48,42 +48,25 @@ const Index = () => {
       {/* About Section with Image and Stats */}
       <section id="about" className="py-20 px-4">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-4xl font-bold text-crystal-accent">
-                About Us
-              </h2>
-              <p className="text-lg text-crystal-secondary leading-relaxed">
-                At CrystalPeak Services, we believe in delivering excellence through clarity
-                and precision. Our team of experts brings years of experience and dedication
-                to every project we undertake.
-              </p>
-              <p className="text-lg text-crystal-secondary leading-relaxed">
-                Founded on the principles of professionalism and innovation, we strive to
-                help businesses reach new heights through our comprehensive range of services.
-              </p>
-              
-              {/* Stats Grid moved to About section */}
-              <div className="grid grid-cols-2 gap-8 mt-12">
-                <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg">
-                  <h3 className="text-3xl font-bold text-crystal-primary mb-2">500+</h3>
-                  <p className="text-crystal-secondary">Projects Completed</p>
-                </div>
-                <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg">
-                  <h3 className="text-3xl font-bold text-crystal-primary mb-2">1000+</h3>
-                  <p className="text-crystal-secondary">Happy Clients</p>
-                </div>
-                <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg">
-                  <h3 className="text-3xl font-bold text-crystal-primary mb-2">50+</h3>
-                  <p className="text-crystal-secondary">Team Members</p>
-                </div>
-                <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg">
-                  <h3 className="text-3xl font-bold text-crystal-primary mb-2">98%</h3>
-                  <p className="text-crystal-secondary">Satisfaction Rate</p>
-                </div>
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            {/* Left Column - Text Content */}
+            <div className="space-y-8">
+              <div className="space-y-6">
+                <h2 className="text-4xl font-bold text-crystal-accent">
+                  About Us
+                </h2>
+                <p className="text-lg text-crystal-secondary leading-relaxed">
+                  At CrystalPeak Services, we believe in delivering excellence through clarity
+                  and precision. Our team of experts brings years of experience and dedication
+                  to every project we undertake.
+                </p>
+                <p className="text-lg text-crystal-secondary leading-relaxed">
+                  Founded on the principles of professionalism and innovation, we strive to
+                  help businesses reach new heights through our comprehensive range of services.
+                </p>
               </div>
-
-              <div className="flex gap-4 mt-8">
+              
+              <div className="flex flex-wrap gap-6">
                 <div className="flex items-center gap-2">
                   <Trophy className="w-6 h-6 text-crystal-primary" />
                   <span className="text-crystal-accent">10+ Years Experience</span>
@@ -94,16 +77,32 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            <div className="relative">
+
+            {/* Right Column - Stats Grid */}
+            <div className="space-y-8">
+              <div className="grid grid-cols-2 gap-6">
+                <div className="bg-white/90 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <h3 className="text-3xl font-bold text-crystal-primary">500+</h3>
+                  <p className="text-crystal-secondary mt-2">Projects Completed</p>
+                </div>
+                <div className="bg-white/90 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <h3 className="text-3xl font-bold text-crystal-primary">1000+</h3>
+                  <p className="text-crystal-secondary mt-2">Happy Clients</p>
+                </div>
+                <div className="bg-white/90 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <h3 className="text-3xl font-bold text-crystal-primary">50+</h3>
+                  <p className="text-crystal-secondary mt-2">Team Members</p>
+                </div>
+                <div className="bg-white/90 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <h3 className="text-3xl font-bold text-crystal-primary">98%</h3>
+                  <p className="text-crystal-secondary mt-2">Satisfaction Rate</p>
+                </div>
+              </div>
               <img 
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" 
                 alt="Team collaboration" 
-                className="rounded-2xl shadow-2xl"
+                className="rounded-xl shadow-lg w-full object-cover h-48 md:h-64"
               />
-              <div className="absolute -bottom-6 -right-6 bg-crystal-primary text-white p-6 rounded-2xl shadow-lg">
-                <h3 className="text-2xl font-bold mb-2">500+</h3>
-                <p>Successful Projects</p>
-              </div>
             </div>
           </div>
         </div>
