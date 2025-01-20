@@ -2,6 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 import { Building2, GraduationCap, Languages, Trophy, Users, Target, MapPin, Phone, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -88,30 +89,30 @@ const Index = () => {
             Our Services
           </h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            <Link to="/services/interpretation" className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <Languages className="w-12 h-12 text-crystal-primary mb-4" />
               <h3 className="text-xl font-semibold mb-2 text-crystal-accent">Interpretation</h3>
               <p className="text-crystal-secondary">
                 Professional interpretation services for businesses and organizations,
                 ensuring clear communication across languages.
               </p>
-            </div>
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            </Link>
+            <Link to="/services/consulting" className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <Building2 className="w-12 h-12 text-crystal-primary mb-4" />
               <h3 className="text-xl font-semibold mb-2 text-crystal-accent">Business Consulting</h3>
               <p className="text-crystal-secondary">
                 Strategic guidance and solutions to help your business grow and
                 overcome challenges.
               </p>
-            </div>
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+            </Link>
+            <Link to="/services/training" className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               <GraduationCap className="w-12 h-12 text-crystal-primary mb-4" />
               <h3 className="text-xl font-semibold mb-2 text-crystal-accent">Professional Training</h3>
               <p className="text-crystal-secondary">
                 Comprehensive training programs designed to enhance skills and
                 professional development.
               </p>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
