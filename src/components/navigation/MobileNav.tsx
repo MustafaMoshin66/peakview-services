@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Menu, X, Instagram, Facebook } from "lucide-react";
+import { Menu, X, Instagram, Facebook, Linkedin } from "lucide-react";
 import { LanguageSwitcher } from "../LanguageSwitcher";
 
 interface MobileNavProps {
@@ -25,6 +25,7 @@ export const MobileNav = ({
       <button
         className={`${isScrolled ? 'text-crystal-accent' : 'text-white'}`}
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "Close menu" : "Open menu"}
       >
         {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
       </button>
@@ -69,10 +70,20 @@ export const MobileNav = ({
           
           <div className="flex items-center space-x-6 pt-4 mt-4 border-t border-crystal-light/20 px-4">
             <a
+              href="https://linkedin.com/company/crystalpeak"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-crystal-accent hover:text-crystal-primary transition-colors"
+              aria-label="Visit our LinkedIn page"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a
               href="https://instagram.com/crystalpeak"
               target="_blank"
               rel="noopener noreferrer"
               className="text-crystal-accent hover:text-crystal-primary transition-colors"
+              aria-label="Visit our Instagram page"
             >
               <Instagram className="w-5 h-5" />
             </a>
@@ -81,6 +92,7 @@ export const MobileNav = ({
               target="_blank"
               rel="noopener noreferrer"
               className="text-crystal-accent hover:text-crystal-primary transition-colors"
+              aria-label="Visit our Facebook page"
             >
               <Facebook className="w-5 h-5" />
             </a>
