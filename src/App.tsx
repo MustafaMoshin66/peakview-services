@@ -12,12 +12,12 @@ const Index = lazy(() => import("./pages/Index"));
 const InterpretationService = lazy(() => import("./pages/InterpretationService"));
 const BusinessConsulting = lazy(() => import("./pages/BusinessConsulting"));
 const Construction = lazy(() => import("./pages/Construction"));
+const AboutUs = lazy(() => import("./pages/AboutUs"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 1000 * 60 * 5, // 5 minutes
-      cacheTime: 1000 * 60 * 30, // 30 minutes
     },
   },
 });
@@ -33,6 +33,7 @@ const App = () => (
           <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/about" element={<AboutUs />} />
               <Route path="/services/interpretation" element={<InterpretationService />} />
               <Route path="/services/consulting" element={<BusinessConsulting />} />
               <Route path="/services/construction" element={<Construction />} />

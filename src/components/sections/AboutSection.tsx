@@ -1,4 +1,6 @@
 import { Trophy, Users } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 export const AboutSection = () => {
   return (
@@ -15,6 +17,11 @@ export const AboutSection = () => {
                 and precision. Our team of experts brings years of experience and dedication
                 to every project we undertake.
               </p>
+              <Link to="/about">
+                <Button className="bg-crystal-primary hover:bg-crystal-secondary text-white transition-all">
+                  Learn More About Us
+                </Button>
+              </Link>
             </div>
             
             <div className="grid grid-cols-2 gap-6">
