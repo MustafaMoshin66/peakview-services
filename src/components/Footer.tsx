@@ -1,4 +1,4 @@
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -53,6 +53,14 @@ export const Footer = () => {
                 className="text-crystal-secondary hover:text-crystal-primary transition-colors"
               >
                 <Facebook className="w-8 h-8" />
+              </a>
+              <a
+                href="https://linkedin.com/company/crystalpeak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-crystal-secondary hover:text-crystal-primary transition-colors"
+              >
+                <Linkedin className="w-8 h-8" />
               </a>
             </div>
           </div>

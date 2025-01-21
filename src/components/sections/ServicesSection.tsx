@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Building2, GraduationCap, Languages } from "lucide-react";
+import { Building2, Languages, Building } from "lucide-react";
 
 export const ServicesSection = () => {
   const services = [
@@ -16,10 +16,10 @@ export const ServicesSection = () => {
       path: "/services/consulting"
     },
     {
-      icon: GraduationCap,
-      title: "Professional Training",
-      description: "Comprehensive training programs designed to enhance skills and professional development.",
-      path: "/services/training"
+      icon: Building,
+      title: "Construction Services",
+      description: "Expert construction services for residential, commercial, and infrastructure projects.",
+      path: "/services/construction"
     }
   ];
 

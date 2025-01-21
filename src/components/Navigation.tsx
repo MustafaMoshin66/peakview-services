@@ -40,7 +40,7 @@ export const Navigation = () => {
   const services = [
     { name: t.interpretation, path: "/services/interpretation" },
     { name: t.businessConsulting, path: "/services/consulting" },
-    { name: t.professionalTraining, path: "/services/training" },
+    { name: t.construction, path: "/services/construction" },
   ];
 
   return (

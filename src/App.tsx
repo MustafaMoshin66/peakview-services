@@ -8,7 +8,7 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import InterpretationService from "./pages/InterpretationService";
 import BusinessConsulting from "./pages/BusinessConsulting";
-import ProfessionalTraining from "./pages/ProfessionalTraining";
+import Construction from "./pages/Construction";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +24,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/services/interpretation" element={<InterpretationService />} />
             <Route path="/services/consulting" element={<BusinessConsulting />} />
-            <Route path="/services/training" element={<ProfessionalTraining />} />
+            <Route path="/services/construction" element={<Construction />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
