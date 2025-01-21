@@ -13,9 +13,9 @@ export const AboutSection = () => {
                 About Us
               </h2>
               <p className="text-lg text-crystal-secondary leading-relaxed">
-                At CrystalPeak Services, we believe in delivering excellence through clarity
-                and precision. Our team of experts brings years of experience and dedication
-                to every project we undertake.
+                CrystalPeak Services bridges cultures and businesses through excellence 
+                in construction, consulting, and interpretation services. Our expert team 
+                brings precision and dedication to every project.
               </p>
               <Link to="/about">
                 <Button className="bg-crystal-primary hover:bg-crystal-secondary text-white transition-all">
@@ -26,18 +26,16 @@ export const AboutSection = () => {
             
             <div className="grid grid-cols-2 gap-6">
               <StatCard number="500+" label="Projects Completed" />
-              <StatCard number="1000+" label="Happy Clients" />
-              <StatCard number="50+" label="Team Members" />
-              <StatCard number="98%" label="Satisfaction Rate" />
+              <StatCard number="98%" label="Client Satisfaction" />
             </div>
           </div>
           
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-crystal-primary/20 to-crystal-secondary/20 rounded-2xl transform rotate-3"></div>
             <img 
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80" 
+              src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?auto=format&fit=crop&q=80" 
               alt="Team collaboration" 
-              className="rounded-2xl shadow-2xl w-full object-cover h-[600px] relative z-10"
+              className="rounded-2xl shadow-2xl w-full object-cover h-[500px] relative z-10"
             />
           </div>
         </div>
