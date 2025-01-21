@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ChevronDown, Instagram, Facebook } from "lucide-react";
+import { ChevronDown, Instagram, Facebook, Linkedin } from "lucide-react";
 import { LanguageSwitcher } from "../LanguageSwitcher";
 
 interface DesktopNavProps {
@@ -66,6 +66,14 @@ export const DesktopNav = ({
 
 const SocialLinks = ({ isScrolled }: { isScrolled: boolean }) => (
   <div className="flex items-center space-x-4">
+    <a
+      href="https://linkedin.com/company/crystalpeak"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${isScrolled ? 'text-crystal-accent' : 'text-white'} hover:text-crystal-primary transition-colors`}
+    >
+      <Linkedin className="w-5 h-5" />
+    </a>
     <a
       href="https://instagram.com/crystalpeak"
       target="_blank"

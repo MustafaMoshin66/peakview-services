@@ -1,3 +1,4 @@
+import { Suspense, lazy } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -5,12 +6,21 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { ScrollToTop } from "./components/ScrollToTop";
-import Index from "./pages/Index";
-import InterpretationService from "./pages/InterpretationService";
-import BusinessConsulting from "./pages/BusinessConsulting";
-import Construction from "./pages/Construction";
 
-const queryClient = new QueryClient();
+// Lazy load pages
+const Index = lazy(() => import("./pages/Index"));
+const InterpretationService = lazy(() => import("./pages/InterpretationService"));
+const BusinessConsulting = lazy(() => import("./pages/BusinessConsulting"));
+const Construction = lazy(() => import("./pages/Construction"));
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      cacheTime: 1000 * 60 * 30, // 30 minutes
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -20,12 +30,14 @@ const App = () => (
           <Toaster />
           <Sonner />
           <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/services/interpretation" element={<InterpretationService />} />
-            <Route path="/services/consulting" element={<BusinessConsulting />} />
-            <Route path="/services/construction" element={<Construction />} />
-          </Routes>
+          <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/services/interpretation" element={<InterpretationService />} />
+              <Route path="/services/consulting" element={<BusinessConsulting />} />
+              <Route path="/services/construction" element={<Construction />} />
+            </Routes>
+          </Suspense>
         </BrowserRouter>
       </TooltipProvider>
     </LanguageProvider>
