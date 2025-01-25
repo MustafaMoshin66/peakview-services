@@ -5,30 +5,22 @@ import { LanguageSwitcher } from "../LanguageSwitcher";
 interface DesktopNavProps {
   isScrolled: boolean;
   services: Array<{ name: string; path: string; }>;
-  scrollToSection: (id: string) => void;
+  handleNavigation: (id: string) => void;
   translations: any;
 }
 
 export const DesktopNav = ({ 
   isScrolled, 
   services, 
-  scrollToSection,
+  handleNavigation,
   translations: t
 }: DesktopNavProps) => {
   const location = useLocation();
 
-  const handleNavClick = (id: string) => {
-    if (location.pathname === '/') {
-      scrollToSection(id);
-    } else {
-      window.location.href = `/#${id}`;
-    }
-  };
-
   return (
     <div className="hidden lg:flex items-center space-x-8">
       <button
-        onClick={() => handleNavClick("about")}
+        onClick={() => handleNavigation("about")}
         className={`hover:text-crystal-primary transition-colors capitalize font-medium ${
           isScrolled ? 'text-crystal-accent' : 'text-white'
         }`}
@@ -60,7 +52,7 @@ export const DesktopNav = ({
       </div>
       
       <button
-        onClick={() => handleNavClick("contact")}
+        onClick={() => handleNavigation("contact")}
         className={`hover:text-crystal-primary transition-colors capitalize font-medium ${
           isScrolled ? 'text-crystal-accent' : 'text-white'
         }`}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Logo } from "./navigation/Logo";
 import { DesktopNav } from "./navigation/DesktopNav";
@@ -10,6 +10,7 @@ export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { translations, language } = useLanguage();
   const location = useLocation();
+  const navigate = useNavigate();
   const t = translations[language];
 
   useEffect(() => {
@@ -24,9 +25,15 @@ export const Navigation = () => {
     setIsOpen(false);
   }, [location]);
 
-  const scrollToSection = (id: string) => {
+  const handleNavigation = (id: string) => {
+    console.log('Navigation triggered:', id);
+    if (id === 'about') {
+      navigate('/about');
+      return;
+    }
+    
     if (location.pathname !== '/') {
-      window.location.href = `/#${id}`;
+      navigate(`/#${id}`);
       return;
     }
     
@@ -56,7 +63,7 @@ export const Navigation = () => {
           <DesktopNav 
             isScrolled={isScrolled}
             services={services}
-            scrollToSection={scrollToSection}
+            handleNavigation={handleNavigation}
             translations={t}
           />
           <MobileNav 
@@ -64,7 +71,7 @@ export const Navigation = () => {
             setIsOpen={setIsOpen}
             isScrolled={isScrolled}
             services={services}
-            scrollToSection={scrollToSection}
+            handleNavigation={handleNavigation}
             translations={t}
           />
         </div>

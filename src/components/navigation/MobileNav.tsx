@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
-import { Menu, X, Instagram, Facebook, Linkedin } from "lucide-react";
+import { Menu, X, Instagram, Facebook, Linkedin, ChevronDown, ChevronUp } from "lucide-react";
 import { LanguageSwitcher } from "../LanguageSwitcher";
+import { useState } from "react";
 
 interface MobileNavProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   isScrolled: boolean;
   services: Array<{ name: string; path: string; }>;
-  scrollToSection: (id: string) => void;
+  handleNavigation: (id: string) => void;
   translations: any;
 }
 
@@ -16,89 +17,102 @@ export const MobileNav = ({
   setIsOpen,
   isScrolled,
   services,
-  scrollToSection,
+  handleNavigation,
   translations: t
-}: MobileNavProps) => (
-  <div className="lg:hidden">
-    <div className="flex items-center space-x-4">
-      <LanguageSwitcher />
-      <button
-        className={`${isScrolled ? 'text-crystal-accent' : 'text-white'}`}
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? "Close menu" : "Open menu"}
-      >
-        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-      </button>
-    </div>
+}: MobileNavProps) => {
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
-    {isOpen && (
-      <div className="lg:hidden py-6 animate-fadeIn bg-white/95 backdrop-blur-md mt-4 rounded-xl shadow-lg">
-        <div className="flex flex-col space-y-4">
-          <button
-            onClick={() => {
-              scrollToSection("about");
-              setIsOpen(false);
-            }}
-            className="text-crystal-accent hover:text-crystal-primary transition-colors capitalize font-medium px-4"
-          >
-            {t.about}
-          </button>
-          
-          <div className="space-y-2 px-4">
-            <p className="text-crystal-accent font-medium">{t.services}:</p>
-            {services.map((service) => (
-              <Link
-                key={service.path}
-                to={service.path}
-                className="block text-crystal-secondary hover:text-crystal-primary transition-colors pl-4"
-                onClick={() => setIsOpen(false)}
+  return (
+    <div className="lg:hidden">
+      <div className="flex items-center space-x-4">
+        <LanguageSwitcher />
+        <button
+          className={`${isScrolled ? 'text-crystal-accent' : 'text-white'} p-2`}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+        >
+          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+      </div>
+
+      {isOpen && (
+        <div className="fixed inset-x-0 top-[4rem] p-4 animate-fadeIn bg-white/95 backdrop-blur-md shadow-lg">
+          <div className="flex flex-col space-y-4">
+            <button
+              onClick={() => handleNavigation("about")}
+              className="text-crystal-accent hover:text-crystal-primary transition-colors capitalize font-medium px-4 py-2 text-left rounded-lg hover:bg-crystal-light/20"
+            >
+              {t.about}
+            </button>
+            
+            <div className="space-y-2">
+              <button
+                onClick={() => setIsServicesOpen(!isServicesOpen)}
+                className="w-full flex items-center justify-between text-crystal-accent hover:text-crystal-primary transition-colors capitalize font-medium px-4 py-2 rounded-lg hover:bg-crystal-light/20"
               >
-                {service.name}
-              </Link>
-            ))}
-          </div>
-          
-          <button
-            onClick={() => {
-              scrollToSection("contact");
-              setIsOpen(false);
-            }}
-            className="text-crystal-accent hover:text-crystal-primary transition-colors capitalize font-medium px-4"
-          >
-            {t.contact}
-          </button>
-          
-          <div className="flex items-center space-x-6 pt-4 mt-4 border-t border-crystal-light/20 px-4">
-            <a
-              href="https://linkedin.com/company/crystalpeak"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-crystal-accent hover:text-crystal-primary transition-colors"
-              aria-label="Visit our LinkedIn page"
+                <span>{t.services}</span>
+                {isServicesOpen ? (
+                  <ChevronUp className="h-5 w-5" />
+                ) : (
+                  <ChevronDown className="h-5 w-5" />
+                )}
+              </button>
+              
+              {isServicesOpen && (
+                <div className="pl-4 space-y-2 animate-fadeIn">
+                  {services.map((service) => (
+                    <Link
+                      key={service.path}
+                      to={service.path}
+                      className="block text-crystal-secondary hover:text-crystal-primary transition-colors px-4 py-2 rounded-lg hover:bg-crystal-light/20"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+            
+            <button
+              onClick={() => handleNavigation("contact")}
+              className="text-crystal-accent hover:text-crystal-primary transition-colors capitalize font-medium px-4 py-2 text-left rounded-lg hover:bg-crystal-light/20"
             >
-              <Linkedin className="w-5 h-5" />
-            </a>
-            <a
-              href="https://instagram.com/crystalpeak"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-crystal-accent hover:text-crystal-primary transition-colors"
-              aria-label="Visit our Instagram page"
-            >
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a
-              href="https://facebook.com/crystalpeak"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-crystal-accent hover:text-crystal-primary transition-colors"
-              aria-label="Visit our Facebook page"
-            >
-              <Facebook className="w-5 h-5" />
-            </a>
+              {t.contact}
+            </button>
+            
+            <div className="flex items-center space-x-6 pt-4 mt-4 border-t border-crystal-light/20 px-4">
+              <a
+                href="https://linkedin.com/company/crystalpeak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-crystal-accent hover:text-crystal-primary transition-colors p-2"
+                aria-label="Visit our LinkedIn page"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://instagram.com/crystalpeak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-crystal-accent hover:text-crystal-primary transition-colors p-2"
+                aria-label="Visit our Instagram page"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://facebook.com/crystalpeak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-crystal-accent hover:text-crystal-primary transition-colors p-2"
+                aria-label="Visit our Facebook page"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    )}
-  </div>
-);
+      )}
+    </div>
+  );
+};
