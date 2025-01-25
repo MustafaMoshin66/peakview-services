@@ -10,7 +10,7 @@ export const Footer = () => {
             <img 
               src="/lovable-uploads/f707d378-8f0e-4adb-bf79-8964d18ae477.png" 
               alt="CrystalPeak Services" 
-              className="h-12 transition-transform hover:scale-105"
+              className="h-36 transition-transform hover:scale-105" // Changed from h-12 to h-36 (3x bigger)
             />
             <p className="text-crystal-light/80 text-sm leading-relaxed text-center md:text-left max-w-xs">
               Elevating businesses through professional services and expertise.
