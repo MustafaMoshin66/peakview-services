@@ -12,9 +12,9 @@ const InterpretationService = () => {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center px-4 pt-16">
         <div 
-          className="absolute inset-0 z-0 opacity-20"
+          className="absolute inset-0 z-0 opacity-30"
           style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?auto=format&fit=crop&q=80")',
+            backgroundImage: 'url("https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}

@@ -12,9 +12,9 @@ const ProfessionalTraining = () => {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center px-4 pt-16">
         <div 
-          className="absolute inset-0 z-0 opacity-20"
+          className="absolute inset-0 z-0 opacity-30"
           style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80")',
+            backgroundImage: 'url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
