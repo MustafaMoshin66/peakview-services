@@ -53,11 +53,13 @@ export const Navigation = () => {
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'
+        isScrolled 
+          ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' 
+          : 'bg-transparent py-4'
       }`}
       dir={language === 'ar' ? 'rtl' : 'ltr'}
     >
-      <div className="container mx-auto px-4 lg:px-6">
+      <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Logo />
           <DesktopNav 

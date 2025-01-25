@@ -22,12 +22,18 @@ export const MobileNav = ({
 }: MobileNavProps) => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
 
+  const menuButtonClass = `${
+    isScrolled ? 'text-crystal-accent' : 'text-white'
+  } p-2 hover:text-crystal-primary transition-colors`;
+
+  const menuItemClass = "w-full text-crystal-accent hover:text-crystal-primary transition-colors capitalize font-medium px-4 py-3 text-left rounded-lg hover:bg-crystal-light/20";
+
   return (
     <div className="lg:hidden">
       <div className="flex items-center space-x-4">
         <LanguageSwitcher />
         <button
-          className={`${isScrolled ? 'text-crystal-accent' : 'text-white'} p-2`}
+          className={menuButtonClass}
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
         >
@@ -36,11 +42,14 @@ export const MobileNav = ({
       </div>
 
       {isOpen && (
-        <div className="fixed inset-x-0 top-[4rem] p-4 animate-fadeIn bg-white/95 backdrop-blur-md shadow-lg">
-          <div className="flex flex-col space-y-4">
+        <div className="fixed inset-x-0 top-[4rem] p-4 animate-fadeIn bg-white/95 backdrop-blur-md shadow-lg max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <div className="flex flex-col space-y-2">
             <button
-              onClick={() => handleNavigation("about")}
-              className="text-crystal-accent hover:text-crystal-primary transition-colors capitalize font-medium px-4 py-2 text-left rounded-lg hover:bg-crystal-light/20"
+              onClick={() => {
+                handleNavigation("about");
+                setIsOpen(false);
+              }}
+              className={menuItemClass}
             >
               {t.about}
             </button>
@@ -48,7 +57,7 @@ export const MobileNav = ({
             <div className="space-y-2">
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className="w-full flex items-center justify-between text-crystal-accent hover:text-crystal-primary transition-colors capitalize font-medium px-4 py-2 rounded-lg hover:bg-crystal-light/20"
+                className="w-full flex items-center justify-between text-crystal-accent hover:text-crystal-primary transition-colors capitalize font-medium px-4 py-3 rounded-lg hover:bg-crystal-light/20"
               >
                 <span>{t.services}</span>
                 {isServicesOpen ? (
@@ -59,12 +68,12 @@ export const MobileNav = ({
               </button>
               
               {isServicesOpen && (
-                <div className="pl-4 space-y-2 animate-fadeIn">
+                <div className="pl-4 space-y-1 animate-fadeIn">
                   {services.map((service) => (
                     <Link
                       key={service.path}
                       to={service.path}
-                      className="block text-crystal-secondary hover:text-crystal-primary transition-colors px-4 py-2 rounded-lg hover:bg-crystal-light/20"
+                      className="block text-crystal-secondary hover:text-crystal-primary transition-colors px-4 py-3 rounded-lg hover:bg-crystal-light/20"
                       onClick={() => setIsOpen(false)}
                     >
                       {service.name}
@@ -75,13 +84,16 @@ export const MobileNav = ({
             </div>
             
             <button
-              onClick={() => handleNavigation("contact")}
-              className="text-crystal-accent hover:text-crystal-primary transition-colors capitalize font-medium px-4 py-2 text-left rounded-lg hover:bg-crystal-light/20"
+              onClick={() => {
+                handleNavigation("contact");
+                setIsOpen(false);
+              }}
+              className={menuItemClass}
             >
               {t.contact}
             </button>
             
-            <div className="flex items-center space-x-6 pt-4 mt-4 border-t border-crystal-light/20 px-4">
+            <div className="flex items-center justify-center space-x-8 pt-4 mt-4 border-t border-crystal-light/20">
               <a
                 href="https://linkedin.com/company/crystalpeak"
                 target="_blank"
