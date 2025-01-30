@@ -17,16 +17,21 @@ export const AboutSection = () => {
                 in construction, consulting, and interpretation services. Our expert team 
                 brings precision and dedication to every project.
               </p>
-              <Link to="/about">
-                <Button className="bg-crystal-primary hover:bg-crystal-secondary text-white transition-all">
-                  Learn More About Us
-                </Button>
-              </Link>
             </div>
             
             <div className="grid grid-cols-2 gap-6">
               <StatCard number="500+" label="Projects Completed" />
               <StatCard number="98%" label="Client Satisfaction" />
+              <StatCard number="25+" label="Countries Served" />
+              <StatCard number="150+" label="Expert Team Members" />
+            </div>
+
+            <div className="text-center md:text-left pt-4">
+              <Link to="/about">
+                <Button className="bg-crystal-primary hover:bg-crystal-secondary text-white transition-all">
+                  Learn More About Us
+                </Button>
+              </Link>
             </div>
           </div>
           
