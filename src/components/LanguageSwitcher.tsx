@@ -24,11 +24,20 @@ export const LanguageSwitcher = () => {
           </span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-32">
-        <DropdownMenuItem onClick={() => setLanguage('en')}>
+      <DropdownMenuContent 
+        align="end" 
+        className="w-32 bg-white/95 backdrop-blur-md border border-gray-200 shadow-lg"
+      >
+        <DropdownMenuItem 
+          onClick={() => setLanguage('en')}
+          className="hover:bg-crystal-light/20 focus:bg-crystal-light/20 cursor-pointer"
+        >
           English
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setLanguage('ar')} className="font-arabic">
+        <DropdownMenuItem 
+          onClick={() => setLanguage('ar')} 
+          className="font-arabic hover:bg-crystal-light/20 focus:bg-crystal-light/20 cursor-pointer"
+        >
           العربية
         </DropdownMenuItem>
       </DropdownMenuContent>
