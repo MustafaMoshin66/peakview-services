@@ -1,53 +1,31 @@
-import React, { createContext, useContext, useState } from 'react';
-
-type Language = 'en' | 'ar';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { translations, Language, TranslationKey } from '../translations';
 
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  translations: Record<string, Record<string, string>>;
+  t: (key: TranslationKey) => string;
+  dir: 'ltr' | 'rtl';
 }
-
-const translations = {
-  en: {
-    about: "About",
-    services: "Services",
-    contact: "Contact",
-    interpretation: "Interpretation",
-    businessConsulting: "Business Consulting",
-    professionalTraining: "Professional Training",
-    projectsCompleted: "Projects Completed",
-    happyClients: "Happy Clients",
-    teamMembers: "Team Members",
-    satisfactionRate: "Satisfaction Rate",
-    aboutUsDescription: "At CrystalPeak Services, we believe in delivering excellence through clarity and precision. Our team of experts brings years of experience and dedication to every project we undertake.",
-    getInTouch: "Get in Touch",
-    exploreServices: "Explore Our Services",
-  },
-  ar: {
-    about: "عن الشركة",
-    services: "الخدمات",
-    contact: "اتصل بنا",
-    interpretation: "خدمات الترجمة",
-    businessConsulting: "استشارات الأعمال",
-    professionalTraining: "التدريب المهني",
-    projectsCompleted: "مشروع مكتمل",
-    happyClients: "عميل سعيد",
-    teamMembers: "عضو في الفريق",
-    satisfactionRate: "نسبة الرضا",
-    aboutUsDescription: "في كريستال بيك للخدمات، نؤمن بتقديم التميز من خلال الوضوح والدقة. يجلب فريق الخبراء لدينا سنوات من الخبرة والتفاني في كل مشروع نقوم به.",
-    getInTouch: "تواصل معنا",
-    exploreServices: "استكشف خدماتنا",
-  }
-};
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
   const [language, setLanguage] = useState<Language>('en');
+  
+  useEffect(() => {
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = language;
+  }, [language]);
+
+  const t = (key: TranslationKey): string => {
+    return translations[language][key] || translations.en[key] || key;
+  };
+
+  const dir = language === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, translations }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, dir }}>
       {children}
     </LanguageContext.Provider>
   );
