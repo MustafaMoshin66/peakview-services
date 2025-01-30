@@ -1,8 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { GraduationCap, CheckCircle2, Users, Target, ArrowRight } from "lucide-react";
+import { GraduationCap, CheckCircle2, Users, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 
 const ProfessionalTraining = () => {
   return (
@@ -112,13 +111,7 @@ const ProfessionalTraining = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-crystal-accent mb-2">{program.title}</h3>
-                  <p className="text-crystal-secondary mb-4">{program.description}</p>
-                  <Link 
-                    to="/contact" 
-                    className="inline-flex items-center text-crystal-primary hover:text-crystal-accent transition-colors"
-                  >
-                    Learn More <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
+                  <p className="text-crystal-secondary">{program.description}</p>
                 </div>
               </div>
             ))}
