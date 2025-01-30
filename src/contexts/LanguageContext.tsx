@@ -20,8 +20,11 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
 
   const t = (key: TranslationKey): string => {
     console.log('Translation requested for key:', key, 'in language:', language);
-    console.log('Available translations:', translations[language]);
-    return translations[language][key] || translations.en[key] || key;
+    if (!translations[language] || !translations[language][key]) {
+      console.warn(`Missing translation for key "${key}" in language "${language}"`);
+      return translations.en[key] || key;
+    }
+    return translations[language][key];
   };
 
   const dir = language === 'ar' ? 'rtl' : 'ltr';

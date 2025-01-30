@@ -3,12 +3,14 @@ import { Footer } from "@/components/Footer";
 import { Building2, BarChart2, TrendingUp, Users, CheckCircle2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const BusinessConsulting = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-crystal-light via-white to-crystal-light/50">
-      <Navigation />
-      
+    <LanguageProvider>
+      <div className="min-h-screen bg-gradient-to-br from-crystal-light via-white to-crystal-light/50">
+        <Navigation />
+        
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center px-4 pt-16">
         <div 
@@ -120,9 +122,10 @@ const BusinessConsulting = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
-    </div>
+        
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 };
 

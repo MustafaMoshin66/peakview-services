@@ -8,16 +8,16 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
-      <LanguageProvider>
+    <LanguageProvider>
+      <div className="min-h-screen">
         <Navigation />
         <HeroSection />
         <AboutSection />
         <ServicesSection />
         <ContactSection />
         <Footer />
-      </LanguageProvider>
-    </div>
+      </div>
+    </LanguageProvider>
   );
 };
 
