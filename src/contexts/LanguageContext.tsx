@@ -6,7 +6,6 @@ interface LanguageContextType {
   setLanguage: (lang: Language) => void;
   t: (key: TranslationKey) => string;
   dir: 'ltr' | 'rtl';
-  translations: typeof translations;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -20,13 +19,15 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   }, [language]);
 
   const t = (key: TranslationKey): string => {
+    console.log('Translation requested for key:', key, 'in language:', language);
+    console.log('Available translations:', translations[language]);
     return translations[language][key] || translations.en[key] || key;
   };
 
   const dir = language === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, dir, translations }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, dir }}>
       {children}
     </LanguageContext.Provider>
   );
