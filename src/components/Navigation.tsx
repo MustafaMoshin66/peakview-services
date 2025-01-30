@@ -8,10 +8,9 @@ import { MobileNav } from "./navigation/MobileNav";
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { translations, language } = useLanguage();
+  const { language, t } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
-  const t = translations[language];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,9 +44,9 @@ export const Navigation = () => {
   };
 
   const services = [
-    { name: t.interpretation, path: "/services/interpretation" },
-    { name: t.businessConsulting, path: "/services/consulting" },
-    { name: t.construction, path: "/services/construction" },
+    { name: t('interpretation'), path: "/services/interpretation" },
+    { name: t('businessConsulting'), path: "/services/consulting" },
+    { name: t('construction'), path: "/services/construction" },
   ];
 
   return (
