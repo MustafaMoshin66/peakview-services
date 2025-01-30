@@ -40,12 +40,14 @@ export const DesktopNav = ({
           <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
         </button>
         
-        <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
-          {services.map((service) => (
+        <div className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-md rounded-xl shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 border border-gray-100">
+          {services.map((service, index) => (
             <Link
               key={service.path}
               to={service.path}
-              className="block px-6 py-3 text-crystal-accent hover:bg-crystal-light/30 hover:text-crystal-primary transition-colors"
+              className={`block px-6 py-3 text-crystal-accent hover:bg-crystal-light/30 hover:text-crystal-primary transition-colors ${
+                index !== services.length - 1 ? 'border-b border-gray-100' : ''
+              }`}
             >
               {service.name}
             </Link>
