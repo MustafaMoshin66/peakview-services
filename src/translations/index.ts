@@ -12,7 +12,7 @@ export const translations = {
     
     // Hero Section
     welcomeTo: "Welcome to",
-    companyName: "CrystalPeak Services",
+    companyName: "Crystal Peak Services",
     heroSubtitle: "Elevating businesses through professional services and expertise",
     exploreServices: "Explore Our Services",
     
@@ -62,7 +62,7 @@ export const translations = {
     
     // Hero Section
     welcomeTo: "مرحباً بكم في",
-    companyName: "كريستال بيك للخدمات",
+    companyName: "قمة البلور للخدمات",
     heroSubtitle: "نرتقي بالأعمال من خلال الخدمات المهنية والخبرة",
     exploreServices: "استكشف خدماتنا",
     
