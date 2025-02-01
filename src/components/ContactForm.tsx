@@ -37,11 +37,15 @@ export const ContactForm = () => {
     <form
       name="contact"
       method="POST"
+      action="/"
       data-netlify="true"
+      data-netlify-honeypot="bot-field"
       className="space-y-6 w-full max-w-md mx-auto"
       onSubmit={handleSubmit}
+      encType="application/x-www-form-urlencoded"
     >
       <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="bot-field" />
       
       <div className="space-y-2">
         <Input
