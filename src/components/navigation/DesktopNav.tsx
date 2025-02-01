@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ChevronDown, Instagram, Facebook, Linkedin } from "lucide-react";
 import { LanguageSwitcher } from "../LanguageSwitcher";
 
@@ -15,8 +15,6 @@ export const DesktopNav = ({
   handleNavigation,
   translations: t
 }: DesktopNavProps) => {
-  const location = useLocation();
-
   const navLinkClass = `relative group-hover:text-crystal-primary transition-colors capitalize font-medium ${
     isScrolled ? 'text-crystal-accent' : 'text-white'
   } after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-crystal-primary after:left-0 after:bottom-[-4px] after:transition-all after:duration-300 hover:after:w-full`;
@@ -27,7 +25,7 @@ export const DesktopNav = ({
         onClick={() => handleNavigation("about")}
         className={navLinkClass}
       >
-        {t.about}
+        {t('about')}
       </button>
       
       <div className="relative group">
@@ -36,7 +34,7 @@ export const DesktopNav = ({
             isScrolled ? 'text-crystal-accent' : 'text-white'
           } hover:text-crystal-primary transition-colors capitalize font-medium`}
         >
-          <span>{t.services}</span>
+          <span>{t('services')}</span>
           <ChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
         </button>
         
@@ -59,7 +57,7 @@ export const DesktopNav = ({
         onClick={() => handleNavigation("contact")}
         className={navLinkClass}
       >
-        {t.contact}
+        {t('contact')}
       </button>
       
       <div className="flex items-center space-x-8 ml-8 border-l pl-8 border-white/20">

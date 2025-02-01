@@ -51,7 +51,7 @@ export const MobileNav = ({
               }}
               className={menuItemClass}
             >
-              {t.about}
+              {t('about')}
             </button>
             
             <div className="space-y-2">
@@ -59,7 +59,7 @@ export const MobileNav = ({
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
                 className="w-full flex items-center justify-between text-crystal-accent hover:text-crystal-primary transition-colors capitalize font-medium px-4 py-3 rounded-lg hover:bg-crystal-light/20"
               >
-                <span>{t.services}</span>
+                <span>{t('services')}</span>
                 {isServicesOpen ? (
                   <ChevronUp className="h-5 w-5" />
                 ) : (
@@ -90,7 +90,7 @@ export const MobileNav = ({
               }}
               className={menuItemClass}
             >
-              {t.contact}
+              {t('contact')}
             </button>
             
             <div className="flex items-center justify-center space-x-8 pt-4 mt-4 border-t border-crystal-light/20">
