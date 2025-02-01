@@ -3,8 +3,11 @@ import { Footer } from "@/components/Footer";
 import { Languages, Globe2, MessageSquare, Users, CheckCircle2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const InterpretationService = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-crystal-light via-white to-crystal-light/50">
       <Navigation />
@@ -25,16 +28,16 @@ const InterpretationService = () => {
               <Languages className="w-12 h-12 text-crystal-primary" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-crystal-accent mb-6 animate-fadeIn">
-              Professional Interpretation Services
+              {t('interpretationHero')}
             </h1>
             <p className="text-xl text-crystal-secondary max-w-2xl mx-auto mb-8 animate-fadeIn">
-              Break language barriers with our expert interpretation services for business and organizations.
+              {t('interpretationSubtitle')}
             </p>
             <Button 
               className="bg-crystal-primary hover:bg-crystal-secondary text-white animate-fadeIn"
               onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Explore Services
+              {t('exploreServices')}
             </Button>
           </div>
         </div>
@@ -47,18 +50,18 @@ const InterpretationService = () => {
             {[
               {
                 icon: <Globe2 className="w-12 h-12 text-crystal-primary mb-4" />,
-                title: "Global Coverage",
-                description: "Professional interpretation services in over 50 languages with native speakers."
+                title: t('globalCoverage'),
+                description: t('globalCoverageDesc')
               },
               {
                 icon: <MessageSquare className="w-12 h-12 text-crystal-primary mb-4" />,
-                title: "Real-time Translation",
-                description: "Instant interpretation for meetings, conferences, and business negotiations."
+                title: t('realTime'),
+                description: t('realTimeDesc')
               },
               {
                 icon: <Users className="w-12 h-12 text-crystal-primary mb-4" />,
-                title: "Cultural Expertise",
-                description: "Cultural context and nuance understanding for accurate communication."
+                title: t('culturalExpertise'),
+                description: t('culturalExpertiseDesc')
               }
             ].map((service, index) => (
               <div 
@@ -79,15 +82,15 @@ const InterpretationService = () => {
       <section className="py-20 px-4 bg-white/50">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-crystal-accent text-center mb-12">
-            Why Choose Our Interpretation Services
+            {t('whyChooseUs')}
           </h2>
           <div className="max-w-4xl mx-auto space-y-6">
             {[
-              "Certified Professional Interpreters",
-              "24/7 Availability",
-              "Industry-Specific Expertise",
-              "Advanced Technology Integration",
-              "Quality Assurance Guarantee"
+              t('certifiedInterpreters'),
+              t('availability'),
+              t('industryExpertise'),
+              t('techIntegration'),
+              t('qualityAssurance')
             ].map((feature, index) => (
               <div 
                 key={feature}
@@ -107,14 +110,14 @@ const InterpretationService = () => {
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto bg-gradient-to-br from-crystal-primary/10 to-crystal-light p-12 rounded-3xl text-center">
             <h2 className="text-3xl font-bold text-crystal-accent mb-6">
-              Need Professional Interpretation Services?
+              {t('needServices')}
             </h2>
             <p className="text-xl text-crystal-secondary mb-8 max-w-2xl mx-auto">
-              Connect with our team to discuss your interpretation needs and get a customized solution.
+              {t('connectDesc')}
             </p>
             <Link to="/#contact">
               <Button className="bg-crystal-primary hover:bg-crystal-secondary text-white inline-flex items-center">
-                Contact Us <ArrowRight className="ml-2 w-4 h-4" />
+                {t('contactUs')} <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
           </div>

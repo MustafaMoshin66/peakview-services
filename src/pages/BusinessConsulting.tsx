@@ -3,14 +3,15 @@ import { Footer } from "@/components/Footer";
 import { Building2, BarChart2, TrendingUp, Users, CheckCircle2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { LanguageProvider } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const BusinessConsulting = () => {
+  const { t } = useLanguage();
+
   return (
-    <LanguageProvider>
-      <div className="min-h-screen bg-gradient-to-br from-crystal-light via-white to-crystal-light/50">
-        <Navigation />
-        
+    <div className="min-h-screen bg-gradient-to-br from-crystal-light via-white to-crystal-light/50">
+      <Navigation />
+      
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center px-4 pt-16">
         <div 
@@ -27,16 +28,16 @@ const BusinessConsulting = () => {
               <Building2 className="w-12 h-12 text-crystal-primary" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-crystal-accent mb-6 animate-fadeIn">
-              Strategic Business Consulting
+              {t('consultingHero')}
             </h1>
             <p className="text-xl text-crystal-secondary max-w-2xl mx-auto mb-8 animate-fadeIn">
-              Transform your business with data-driven insights and expert guidance from industry professionals.
+              {t('consultingSubtitle')}
             </p>
             <Button 
               className="bg-crystal-primary hover:bg-crystal-secondary text-white animate-fadeIn"
               onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Explore Our Solutions
+              {t('exploreSolutions')}
             </Button>
           </div>
         </div>
@@ -49,18 +50,18 @@ const BusinessConsulting = () => {
             {[
               {
                 icon: <BarChart2 className="w-12 h-12 text-crystal-primary mb-4" />,
-                title: "Market Analysis",
-                description: "Comprehensive market research and competitor analysis to identify opportunities and threats."
+                title: t('marketAnalysis'),
+                description: t('marketAnalysisDesc')
               },
               {
                 icon: <TrendingUp className="w-12 h-12 text-crystal-primary mb-4" />,
-                title: "Growth Strategy",
-                description: "Develop and implement strategies for sustainable business growth and market expansion."
+                title: t('growthStrategy'),
+                description: t('growthStrategyDesc')
               },
               {
                 icon: <Users className="w-12 h-12 text-crystal-primary mb-4" />,
-                title: "Organizational Development",
-                description: "Optimize your organizational structure and processes for maximum efficiency."
+                title: t('orgDevelopment'),
+                description: t('orgDevelopmentDesc')
               }
             ].map((service, index) => (
               <div 
@@ -81,15 +82,15 @@ const BusinessConsulting = () => {
       <section className="py-20 px-4 bg-white/50">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-crystal-accent text-center mb-12">
-            Our Consulting Process
+            {t('consultingProcess')}
           </h2>
           <div className="max-w-4xl mx-auto space-y-6">
             {[
-              "Initial Assessment and Goal Setting",
-              "Data Collection and Analysis",
-              "Strategy Development",
-              "Implementation Support",
-              "Monitoring and Optimization"
+              t('initialAssessment'),
+              t('dataCollection'),
+              t('strategyDev'),
+              t('implementation'),
+              t('monitoring')
             ].map((step, index) => (
               <div 
                 key={step}
@@ -109,14 +110,14 @@ const BusinessConsulting = () => {
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto bg-gradient-to-br from-crystal-primary/10 to-crystal-light p-12 rounded-3xl text-center">
             <h2 className="text-3xl font-bold text-crystal-accent mb-6">
-              Ready to Transform Your Business?
+              {t('transformBusiness')}
             </h2>
             <p className="text-xl text-crystal-secondary mb-8 max-w-2xl mx-auto">
-              Let's work together to unlock your business's full potential and achieve sustainable growth.
+              {t('transformDesc')}
             </p>
             <Link to="/#contact">
               <Button className="bg-crystal-primary hover:bg-crystal-secondary text-white inline-flex items-center">
-                Get Started <ArrowRight className="ml-2 w-4 h-4" />
+                {t('getStarted')} <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
           </div>
@@ -125,7 +126,6 @@ const BusinessConsulting = () => {
         
         <Footer />
       </div>
-    </LanguageProvider>
   );
 };
 

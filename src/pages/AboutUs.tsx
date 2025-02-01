@@ -1,9 +1,11 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
 import { Trophy, Users, Target, Heart } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const AboutUs = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -22,10 +24,10 @@ const AboutUs = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fadeIn">
-              Our Story
+              {t('ourStory')}
             </h1>
             <p className="text-xl text-white/90 animate-fadeIn" style={{ animationDelay: "0.2s" }}>
-              Building bridges between cultures, businesses, and dreams since 2020
+              {t('buildingBridges')}
             </p>
           </div>
         </div>
@@ -38,22 +40,18 @@ const AboutUs = () => {
             <div className="space-y-8">
               <div className="space-y-6">
                 <h2 className="text-4xl font-bold text-crystal-accent">
-                  Our Mission
+                  {t('ourMission')}
                 </h2>
                 <p className="text-lg text-crystal-secondary leading-relaxed">
-                  At CrystalPeak Services, we're dedicated to delivering excellence through 
-                  clarity and precision. Our mission is to provide exceptional services that 
-                  enable businesses to thrive in the global marketplace through clear communication, 
-                  strategic guidance, and reliable solutions.
+                  {t('missionText')}
                 </p>
               </div>
               <div className="space-y-6">
                 <h2 className="text-4xl font-bold text-crystal-accent">
-                  Our Vision
+                  {t('ourVision')}
                 </h2>
                 <p className="text-lg text-crystal-secondary leading-relaxed">
-                  To be the leading provider of comprehensive business services, known for 
-                  excellence in construction, consulting, and interpretation solutions worldwide.
+                  {t('visionText')}
                 </p>
               </div>
             </div>
@@ -73,28 +71,28 @@ const AboutUs = () => {
       <section className="py-20 bg-crystal-light">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-crystal-accent text-center mb-16">
-            Our Core Values
+            {t('ourCoreValues')}
           </h2>
           <div className="grid md:grid-cols-4 gap-8">
             <ValueCard 
               icon={<Trophy className="w-8 h-8 text-crystal-primary" />}
-              title="Excellence"
-              description="We strive for excellence in every project we undertake"
+              title={t('excellence')}
+              description={t('excellenceDesc')}
             />
             <ValueCard 
               icon={<Users className="w-8 h-8 text-crystal-primary" />}
-              title="Collaboration"
-              description="Working together to achieve extraordinary results"
+              title={t('collaboration')}
+              description={t('collaborationDesc')}
             />
             <ValueCard 
               icon={<Target className="w-8 h-8 text-crystal-primary" />}
-              title="Innovation"
-              description="Embracing new ideas and creative solutions"
+              title={t('innovation')}
+              description={t('innovationDesc')}
             />
             <ValueCard 
               icon={<Heart className="w-8 h-8 text-crystal-primary" />}
-              title="Integrity"
-              description="Building trust through honest and ethical practices"
+              title={t('integrity')}
+              description={t('integrityDesc')}
             />
           </div>
         </div>
@@ -104,23 +102,23 @@ const AboutUs = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-crystal-accent text-center mb-16">
-            Our Leadership Team
+            {t('leadershipTeam')}
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <TeamMember 
               image="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80"
               name="Sarah Johnson"
-              position="CEO & Founder"
+              position={t('ceoFounder')}
             />
             <TeamMember 
               image="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&q=80"
               name="Michael Chen"
-              position="Head of Operations"
+              position={t('headOperations')}
             />
             <TeamMember 
               image="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&q=80"
               name="David Smith"
-              position="Chief Strategy Officer"
+              position={t('chiefStrategy')}
             />
           </div>
         </div>
