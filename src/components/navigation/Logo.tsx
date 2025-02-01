@@ -18,7 +18,7 @@ export const Logo = () => {
       <img 
         src="/lovable-uploads/f707d378-8f0e-4adb-bf79-8964d18ae477.png" 
         alt="CrystalPeak Logo" 
-        className="h-40 w-40 relative z-10 transition-transform hover:scale-105"
+        className="h-30 w-30 relative z-10 transition-transform hover:scale-105"
       />
     </Link>
   );
