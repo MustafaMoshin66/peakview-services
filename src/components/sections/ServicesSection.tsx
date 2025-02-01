@@ -1,24 +1,27 @@
 import { Link } from "react-router-dom";
 import { Building2, Languages, Building } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const ServicesSection = () => {
+  const { t } = useLanguage();
+
   const services = [
     {
       icon: Languages,
-      title: "Interpretation Services",
-      description: "Professional interpretation services for businesses and organizations, ensuring clear communication across languages.",
+      title: t('interpretation'),
+      description: t('interpretationDesc'),
       path: "/services/interpretation"
     },
     {
       icon: Building2,
-      title: "Business Consulting",
-      description: "Strategic guidance and solutions to help your business grow and overcome challenges.",
+      title: t('businessConsulting'),
+      description: t('consultingDesc'),
       path: "/services/consulting"
     },
     {
       icon: Building,
-      title: "Construction Services",
-      description: "Expert construction services for residential, commercial, and infrastructure projects.",
+      title: t('construction'),
+      description: t('constructionDesc'),
       path: "/services/construction"
     }
   ];
@@ -27,7 +30,7 @@ export const ServicesSection = () => {
     <section id="services" className="py-24 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-crystal-accent text-center mb-16">
-          Our Services
+          {t('ourServices')}
         </h2>
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {services.map((service) => (

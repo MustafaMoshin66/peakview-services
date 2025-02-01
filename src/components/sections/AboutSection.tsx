@@ -1,8 +1,11 @@
 import { Trophy, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const AboutSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="about" className="py-24 bg-gradient-to-b from-white to-crystal-light/20">
       <div className="container mx-auto px-4">
@@ -10,26 +13,24 @@ export const AboutSection = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <h2 className="text-4xl font-bold text-crystal-accent">
-                About Us
+                {t('aboutUs')}
               </h2>
               <p className="text-lg text-crystal-secondary leading-relaxed">
-                CrystalPeak Services bridges cultures and businesses through excellence 
-                in construction, consulting, and interpretation services. Our expert team 
-                brings precision and dedication to every project.
+                {t('aboutDescription')}
               </p>
             </div>
             
             <div className="grid grid-cols-2 gap-6">
-              <StatCard number="500+" label="Projects Completed" />
-              <StatCard number="98%" label="Client Satisfaction" />
-              <StatCard number="25+" label="Countries Served" />
-              <StatCard number="150+" label="Expert Team Members" />
+              <StatCard number="500+" label={t('projectsCompleted')} />
+              <StatCard number="98%" label={t('clientSatisfaction')} />
+              <StatCard number="25+" label={t('countriesServed')} />
+              <StatCard number="150+" label={t('teamMembers')} />
             </div>
 
             <div className="text-center md:text-left pt-4">
               <Link to="/about">
                 <Button className="bg-crystal-primary hover:bg-crystal-secondary text-white transition-all">
-                  Learn More About Us
+                  {t('learnMore')}
                 </Button>
               </Link>
             </div>
