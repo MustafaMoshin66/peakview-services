@@ -22,17 +22,17 @@ export const ContactSection = () => {
               <ContactInfo 
                 icon={MapPin} 
                 title="Location" 
-                content={["123 Business Street", "City, State 12345"]} 
+                content={["1024 Shara Flestain", "Al Mansour, Baghdad"]} 
               />
               <ContactInfo 
                 icon={Phone} 
                 title="Phone" 
-                content={["+1 (555) 123-4567"]} 
+                content={["+1 (555) 425-2561"]} 
               />
               <ContactInfo 
                 icon={Mail} 
                 title="Email" 
-                content={["contact@crystalpeak.com"]} 
+                content={["contact@crystalpeakservices.com"]} 
               />
             </div>
           </div>
