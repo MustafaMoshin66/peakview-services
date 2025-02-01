@@ -29,7 +29,7 @@ export const ContactForm = () => {
 
   return (
     <div className="w-full max-w-md bg-white rounded-xl shadow-xl p-8">
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6" netlify>
         <div className="relative">
           <User className="absolute left-3 top-3 h-5 w-5 text-crystal-secondary/50" />
           <Input
