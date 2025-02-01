@@ -11,11 +11,16 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(() => {
+    const savedLanguage = localStorage.getItem('language');
+    return (savedLanguage as Language) || 'en';
+  });
   
   useEffect(() => {
+    localStorage.setItem('language', language);
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = language;
+    console.log('Language changed to:', language);
   }, [language]);
 
   const t = (key: TranslationKey): string => {
