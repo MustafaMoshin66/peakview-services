@@ -13,7 +13,7 @@ export const Logo = () => {
     <Link 
       to="/" 
       onClick={handleLogoClick}
-      className="flex items-center space-x-4 relative logo-spotlight"
+      className="flex items-center space-x-6 relative logo-spotlight"
     >
       <img 
         src="/lovable-uploads/f707d378-8f0e-4adb-bf79-8964d18ae477.png" 
