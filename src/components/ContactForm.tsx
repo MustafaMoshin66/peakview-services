@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -25,24 +25,51 @@ export const ContactForm = () => {
     console.log("Form field updated:", name, value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     console.log("Form submitted:", formData);
-    toast({
-      title: t('messageSent'),
-      description: t('messageSuccess'),
-    });
+
+    try {
+      const formElement = e.target as HTMLFormElement;
+      const formDataObj = new FormData(formElement);
+      
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formDataObj as any).toString(),
+      });
+
+      toast({
+        title: t('messageSent'),
+        description: t('messageSuccess'),
+        duration: 3000, // Toast will disappear after 3 seconds
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast({
+        title: "Error",
+        description: "There was an error sending your message. Please try again.",
+        duration: 3000,
+        variant: "destructive",
+      });
+    }
   };
 
   return (
     <form
       name="contact"
       method="POST"
-      action="/"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="space-y-6 w-full max-w-md mx-auto"
       onSubmit={handleSubmit}
-      encType="application/x-www-form-urlencoded"
     >
       <input type="hidden" name="form-name" value="contact" />
       <input type="hidden" name="bot-field" />
